@@ -1,0 +1,22 @@
+{
+    "name": "simplercode/asset-aliases",
+    "description": "AssetAliases is very simple ZF2 module for making module-specific layouts insanely easy.",
+    "type": "library",
+    "keywords": [
+        "zf2"
+    ],
+    "homepage": "https://github.com/emcode/AssetAliases",
+    "authors": [
+        {
+            "name": "emcode",
+            "email": "michal@simplercode.com",
+            "homepage": "http://simplercode.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-0": { "AssetAliases": "src/" }
+    }
+}
