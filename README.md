@@ -44,8 +44,8 @@ array(
 ```php
 
 <?php echo $this->headLink()
-                ->appendStylesheet('bootstrap') ?>
-                ->appendStylesheet('bootstrap-editable')
+                ->appendStylesheet('bootstrap')
+                ->appendStylesheet('bootstrap-editable') ?>
 
 <?php echo $this->headScript()
                 ->prependFile('modernizr') ?>
@@ -54,6 +54,6 @@ array(
                 ->appendFile('jquery')
                 ->appendFile('bootstrap')
                 ->appendFile('bootstrap-editable')
-                ->appendFile('select2')
+                ->appendFile('select2') ?>
 
 ```
