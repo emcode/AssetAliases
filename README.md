@@ -19,24 +19,41 @@ Usage
 -----
 
 1. Enable AssetAliases module in your application.config.php
-2. In any module config or autoloaded config you can add aliases to assets paths, for ex:
+2. In any module config or autoloaded config you can configure aliases to assets paths, for ex:
 
 ```php
 array(
-        'asset_aliases' => array(
-            'scripts' => array(
-                'my-script' => '/assets/abcd/js/some-script.js'
-            ),
-            'styles' => array(
-                'my-style' => '/assets/abcd/css/some-style.css'
-            )
+    'asset_aliases' => array(
+        'scripts' => array(
+            'jquery' => '/assets/storage/vendor/jquery/jquery-2.0.3.min.js',
+            'modernizr' => '/assets/storage/vendor/modernizr/modernizr.js',
+            'select2' => '/assets/storage/vendor/select2/select2.js',
+            'bootstrap' => '/assets/storage/vendor/bootstrap/js/bootstrap.min.js',
+            'bootstrap-editable' => '/assets/storage/vendor/bootstrap-editable/js/bootstrap-editable.js'
         ),
+        'styles' => array(
+            'bootstrap' => '/assets/storage/vendor/bootstrap/css/bootstrap.min.css',
+            'bootstrap-editable' => '/assets/storage/vendor/bootstrap-editable/css/bootstrap-editable.css'
+        )
+    ),
 );
 ```
 
-3. Next you can use configured aliases somewhere in yout template or partial:
+3. Next you can use configured aliases somewhere in your template or partial:
 
 ```php
-    $this->headLink()->appendStylesheet('my-style');
-    $this->headScript()->appendFile('my-script')
+
+<?php echo $this->headLink()
+                ->appendStylesheet('bootstrap') ?>
+                ->appendStylesheet('bootstrap-editable')
+
+<?php echo $this->headScript()
+                ->prependFile('modernizr') ?>
+
+<?php echo $this->inlineScript()
+                ->appendFile('jquery')
+                ->appendFile('bootstrap')
+                ->appendFile('bootstrap-editable')
+                ->appendFile('select2')
+
 ```
