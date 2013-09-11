@@ -1,9 +1,10 @@
 {
     "name": "simplercode/asset-aliases",
-    "description": "AssetAliases is very simple ZF2 module for making module-specific layouts insanely easy.",
+    "description": "AssetAliases is ZF2 module for aliasing paths of JS and CSS assets",
     "type": "library",
+    "license": "MIT",
     "keywords": [
-        "zf2"
+        "zf2", "assets", "view"
     ],
     "homepage": "https://github.com/emcode/AssetAliases",
     "authors": [
@@ -14,7 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.3",
+        "zendframework/zendframework" : "2.*"
     },
     "autoload": {
         "psr-0": { "AssetAliases": "src/" }
