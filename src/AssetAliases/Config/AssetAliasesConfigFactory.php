@@ -1,13 +1,12 @@
 <?php
 
-namespace AssetAliases\View\Helper;
+namespace AssetAliases\Config;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use AssetAliases\Config\AssetAliasesConfig;
-use AssetAliases\View\Helper\HeadLink;
 
-class HeadLinkFactory implements FactoryInterface
+class AssetAliasesConfigFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -17,10 +16,10 @@ class HeadLinkFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $mainServiceLocator = $serviceLocator->getServiceLocator();
-        $config = $mainServiceLocator->get('AssetAliases\Config\AssetAliasesConfig');
-        $viewHelper = new HeadLink($config);
-        return $viewHelper;
+        $config = $serviceLocator->get('config');
+        $configData = isset($config['asset_aliases']) ? $config['asset_aliases'] : array();
+        $assetAliasesConfig = new AssetAliasesConfig($configData);
+        return $assetAliasesConfig;
     }
 }
 

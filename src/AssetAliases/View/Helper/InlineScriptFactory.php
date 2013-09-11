@@ -5,9 +5,9 @@ namespace AssetAliases\View\Helper;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use AssetAliases\Config\AssetAliasesConfig;
-use AssetAliases\View\Helper\HeadLink;
+use AssetAliases\View\Helper\HeadScript;
 
-class HeadLinkFactory implements FactoryInterface
+class InlineScriptFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -19,7 +19,7 @@ class HeadLinkFactory implements FactoryInterface
     {
         $mainServiceLocator = $serviceLocator->getServiceLocator();
         $config = $mainServiceLocator->get('AssetAliases\Config\AssetAliasesConfig');
-        $viewHelper = new HeadLink($config);
+        $viewHelper = new InlineScript($config);
         return $viewHelper;
     }
 }

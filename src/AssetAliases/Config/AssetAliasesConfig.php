@@ -40,7 +40,7 @@ class AssetAliasesConfig extends AbstractOptions
      */
     public function isScriptAliasConfigured($alias)
     {
-        return is_array($this->scripts) && isset($this->scripts[$alias]);
+        return !is_null($alias) && is_array($this->scripts) && isset($this->scripts[$alias]);
     }
 
     public function getScriptByAlias($alias)
@@ -70,7 +70,7 @@ class AssetAliasesConfig extends AbstractOptions
      */
     public function isStyleAliasConfigured($alias)
     {
-        return is_array($this->styles) && isset($this->styles[$alias]);
+        return !is_null($alias) && is_array($this->styles) && isset($this->styles[$alias]);
     }
 
     public function getStyleByAlias($alias)
