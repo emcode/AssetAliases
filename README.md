@@ -21,39 +21,66 @@ Usage
 1. Enable AssetAliases module in your application.config.php
 2. In any module config or autoloaded config you can configure aliases to assets paths, for ex:
 
+    ```php
+    array(
+        'asset_aliases' => array(
+            'scripts' => array(
+                'jquery' => '/assets/storage/vendor/jquery/jquery-2.0.3.min.js',
+                'modernizr' => '/assets/storage/vendor/modernizr/modernizr.js',
+                'select2' => '/assets/storage/vendor/select2/select2.js',
+                'bootstrap' => '/assets/storage/vendor/bootstrap/js/bootstrap.min.js',
+                'bootstrap-editable' => '/assets/storage/vendor/bootstrap-editable/js/bootstrap-editable.js'
+            ),
+            'styles' => array(
+                'bootstrap' => '/assets/storage/vendor/bootstrap/css/bootstrap.min.css',
+                'bootstrap-editable' => '/assets/storage/vendor/bootstrap-editable/css/bootstrap-editable.css'
+            )
+        ),
+    );
+    ```
+3. Next you can use configured aliases somewhere in your template or partial:
+
+    ```php
+    
+    <?php echo $this->headLink()
+                    ->appendStylesheet('bootstrap')
+                    ->appendStylesheet('bootstrap-editable') ?>
+    
+    <?php echo $this->headScript()
+                    ->prependFile('modernizr') ?>
+    
+    <?php echo $this->inlineScript()
+                    ->appendFile('jquery')
+                    ->appendFile('bootstrap')
+                    ->appendFile('bootstrap-editable')
+                    ->appendFile('select2') ?>
+    
+    ```
+
+Forced refreshing of browser cache
+-----
+
+You can also configure version string that will be added at the end of assets path. You can change this sting after 
+updating content of your asset files. That way you can force browser to download new assets instead of using previously 
+cached styles or scripts.
 ```php
 array(
     'asset_aliases' => array(
-        'scripts' => array(
-            'jquery' => '/assets/storage/vendor/jquery/jquery-2.0.3.min.js',
-            'modernizr' => '/assets/storage/vendor/modernizr/modernizr.js',
-            'select2' => '/assets/storage/vendor/select2/select2.js',
-            'bootstrap' => '/assets/storage/vendor/bootstrap/js/bootstrap.min.js',
-            'bootstrap-editable' => '/assets/storage/vendor/bootstrap-editable/js/bootstrap-editable.js'
-        ),
-        'styles' => array(
-            'bootstrap' => '/assets/storage/vendor/bootstrap/css/bootstrap.min.css',
-            'bootstrap-editable' => '/assets/storage/vendor/bootstrap-editable/css/bootstrap-editable.css'
-        )
+        'version' => '0.0.1'
     ),
-);
+)
 ```
-
-3. Next you can use configured aliases somewhere in your template or partial:
-
+After configuring version paths to assets will look like this:
 ```php
-
-<?php echo $this->headLink()
-                ->appendStylesheet('bootstrap')
-                ->appendStylesheet('bootstrap-editable') ?>
-
-<?php echo $this->headScript()
-                ->prependFile('modernizr') ?>
-
-<?php echo $this->inlineScript()
-                ->appendFile('jquery')
-                ->appendFile('bootstrap')
-                ->appendFile('bootstrap-editable')
-                ->appendFile('select2') ?>
-
+ /some/path/css/style.css?0.0.1
+ /some/some/path/js/script.js?0.0.1
+```
+You might also set different version string for styles and for scripts using following configuration keys:
+```php
+array(
+    'asset_aliases' => array(
+        'styles_version' => '0.2',
+        'scripts_version' => '0.5'
+    ),
+)
 ```
