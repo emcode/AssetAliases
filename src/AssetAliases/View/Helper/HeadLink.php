@@ -39,6 +39,11 @@ class HeadLink extends ZendHeadLink
             $args[0] = $this->config->getStyleByAlias($href);
         }
 
+        if ($this->config->hasStylesVersion())
+        {
+            $args[0] = $args[0] . '?' . $this->config->getStylesVersion();
+        }
+
         return parent::createDataStylesheet($args);
     }
 

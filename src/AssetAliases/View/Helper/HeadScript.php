@@ -46,6 +46,11 @@ class HeadScript extends ZendHeadScript
             $attributes['src'] = $this->config->getScriptByAlias($alias);
         }
 
+        if ($this->config->hasScriptsVersion())
+        {
+            $attributes['src'] = $attributes['src'] . '?' . $this->config->getScriptsVersion();
+        }
+
         return parent::createData($type, $attributes, $content);
     }
 

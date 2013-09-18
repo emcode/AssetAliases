@@ -8,6 +8,8 @@ use AssetAliases\Config\AssetAliasesConfig;
 
 class AssetAliasesConfigFactory implements FactoryInterface
 {
+    protected $configurationKey = 'asset_aliases';
+
     /**
      * Create service
      *
@@ -17,7 +19,7 @@ class AssetAliasesConfigFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('config');
-        $configData = isset($config['asset_aliases']) ? $config['asset_aliases'] : array();
+        $configData = isset($config[$this->configurationKey]) ? $config[$this->configurationKey] : array();
         $assetAliasesConfig = new AssetAliasesConfig($configData);
         return $assetAliasesConfig;
     }
