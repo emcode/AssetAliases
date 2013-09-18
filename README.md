@@ -11,7 +11,7 @@ You can use configured aliases with headLink, headScript and inlineScript view h
 
 It can be useful in situation where you have few different ZF2 modules that depend on the same asset files.
 
-Now you can have all paths configured in one place. You can also take advatange from overriding
+Now you can have all paths configured in one place. You can also take advantange from overriding
 configuration using global and local configuration files.
 
 
@@ -60,7 +60,7 @@ Usage
 Forced refreshing of browser cache
 -----
 
-You can also configure version string that will be added at the end of assets path. You can change this sting after 
+You can also configure version string that will be appended to the end of asset path. You can change this string after 
 updating content of your asset files. That way you can force browser to download new assets instead of using previously 
 cached styles or scripts.
 ```php
@@ -70,12 +70,12 @@ array(
     ),
 )
 ```
-After configuring version paths to assets will look like this:
+After configuring version key, generated paths will look like this:
 ```php
  /some/path/css/style.css?0.0.1
- /some/some/path/js/script.js?0.0.1
+ /some/path/js/script.js?0.0.1
 ```
-You might also set different version string for styles and for scripts using following configuration keys:
+You can also set different version string for CSS styles and for JS scripts using following configuration keys:
 ```php
 array(
     'asset_aliases' => array(
