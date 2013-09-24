@@ -14,6 +14,11 @@ It can be useful in situation where you have few different ZF2 modules that depe
 Now you can have all paths configured in one place. You can also take advantange from overriding
 configuration using global and local configuration files.
 
+Installation
+-----
+If you are using composer you can install it by adding line to your composer.json
+
+    "simplercode/asset-aliases": "dev-master@dev"
 
 Usage
 -----
